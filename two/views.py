@@ -4,6 +4,8 @@ from django.shortcuts import render
 # Create your views here.
 from django.template import loader
 
+from two.models import List
+
 
 def twoindex(request):
     return HttpResponse('twoindex')
@@ -35,3 +37,37 @@ def testTem1(request):
     # 2, 渲染
     result = index.render(context=context)
     return HttpResponse(result)
+
+
+def addList(request):
+    l = List()
+    l.name = '猪肚'
+    l.age = '10'
+    l.save()
+
+    return HttpResponse('添加成功')
+
+
+def findList(request):
+    # 通过主键查询单个对象
+    # list_first = List.objects.get(pk=1)
+    # print(list_first.name, list_first.age)
+
+    # 查询所有
+    lists = List.objects.all()
+    for list in lists:
+        print(list.id, list.name, list.age)
+    return HttpResponse('查询成功')
+
+
+def updateList(request):
+    list_first = List.objects.first()
+    list_first.name = '羊杂'
+    list_first.save()
+    return HttpResponse('修改成功')
+
+
+def deleteList(request):
+    list_first = List.objects.first()
+    list_first.delete()
+    return HttpResponse('删除成功')
