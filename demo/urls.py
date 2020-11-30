@@ -22,9 +22,12 @@ from app1 import views as app1_views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    # 未拆分路由
+    # 未拆分路由 app1
     path('app1/index1/', app1_views.app1_index1),
 
-    # 拆分路由
+    # 拆分路由 app2
     path('app2/', include('app2.urls')),
+
+    # 拆分路由two
+    path('two/', include('two.urls')),
 ]

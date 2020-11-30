@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    模板---{{ name }}
+    <hr>
+    {{ score_list }}
+    <hr>
+    <ul>
+        {% for score in score_list %}
+        <li>{{ score }}</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
